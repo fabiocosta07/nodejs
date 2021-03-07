@@ -1,6 +1,6 @@
 var mongoose = require('mongoose')
 
-mongoose.connect('mongodb+srv://admin:admin123@cluster0.qeqlg.mongodb.net/test?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://admin:admin123@cluster0.zg9sn.mongodb.net/test?retryWrites=true&w=majority')
 
 var Schema = mongoose.Schema;
 
