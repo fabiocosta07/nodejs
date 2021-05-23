@@ -7,7 +7,6 @@ function bubbleSort(array) {
                 let v = array[i+1];
                 array[i+1] = array[i]
                 array[i] = v
-                allsorted = false
             }
         }    
     }
