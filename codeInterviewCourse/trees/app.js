@@ -123,6 +123,7 @@ tree.insert(20)
 tree.insert(170)
 tree.insert(15)
 tree.insert(1)
+tree.insert(17)
 
 console.log(tree.root)
 //console.log(JSON.stringify(traverse(tree.root)))
