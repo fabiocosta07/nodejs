@@ -67,6 +67,7 @@ class BinarySearchTree {
                 if (!cursorNode.right){
                     if (!parentNode) {
                         this.root = cursorNode.left
+                        return                        
                     }
                     // make the left child a left child of the parent
                     if (cursorNode.value < parentNode.value){
@@ -75,8 +76,38 @@ class BinarySearchTree {
                     } else if (cursorNode.value > parentNode.value){
                         parentNode.right = cursorNode.left
                     } 
-                }
-                return cursorNode
+                // option 2 : right child that doesn't have a left child  
+                } else if (!cursorNode.right.left) {
+                    if (!parentNode) {
+                        this.root = cursorNode.right
+                        return
+                    }
+                    if (cursorNode.value < parentNode.value){
+                        parentNode.left = cursorNode.right
+                        parentNode.left.left = cursorNode.left
+                    } else if (cursorNode.value > parentNode.value) {
+                        parentNode.right = cursorNode.right
+                        parentNode.right.left = cursorNode.left
+                    }
+                // option 3: right child that has a left child
+                } else {
+                    //find the leftmost child of the right child
+                    let parentLeftmost = cursorNode.right
+                    let leftmostOfRightChild = parentLeftmost.left
+                    while (leftmostOfRightChild.left) {
+                        parentLetmost = leftmostOfRightChild
+                        leftmostOfRightChild = leftmostOfRightChild.left
+                    }
+                    parentLeftmost.left = leftmostOfRightChild.right
+
+                    if (cursorNode.value < parentNode.value){
+                        parentNode.left = leftmostOfRightChild
+                    } else if (cursorNode.value > parentNode.value) {
+                        parentNode.right = leftmostOfRightChild
+                    }
+                    leftmostOfRightChild.left = cursorNode.left
+                    leftmostOfRightChild.right = cursorNode.right                
+                }                
             }            
         }        
     }
