@@ -67,7 +67,7 @@ class BinarySearchTree {
                 if (!cursorNode.right){
                     if (!parentNode) {
                         this.root = cursorNode.left
-                        return                        
+                        return true                       
                     }
                     // make the left child a left child of the parent
                     if (cursorNode.value < parentNode.value){
@@ -80,7 +80,7 @@ class BinarySearchTree {
                 } else if (!cursorNode.right.left) {
                     if (!parentNode) {
                         this.root = cursorNode.right
-                        return
+                        return true
                     }
                     if (cursorNode.value < parentNode.value){
                         parentNode.left = cursorNode.right
@@ -99,15 +99,17 @@ class BinarySearchTree {
                         leftmostOfRightChild = leftmostOfRightChild.left
                     }
                     parentLeftmost.left = leftmostOfRightChild.right
-
-                    if (cursorNode.value < parentNode.value){
+                    leftmostOfRightChild.left = cursorNode.left
+                    leftmostOfRightChild.right = cursorNode.right
+                    if (!parentNode) {
+                        this.root = leftmostOfRightChild
+                    } else if (cursorNode.value < parentNode.value){
                         parentNode.left = leftmostOfRightChild
                     } else if (cursorNode.value > parentNode.value) {
                         parentNode.right = leftmostOfRightChild
-                    }
-                    leftmostOfRightChild.left = cursorNode.left
-                    leftmostOfRightChild.right = cursorNode.right                
-                }                
+                    }              
+                }
+                return true                
             }            
         }        
     }
@@ -122,9 +124,12 @@ tree.insert(170)
 tree.insert(15)
 tree.insert(1)
 
-console.log(tree.lookup(20))
+console.log(tree.root)
 //console.log(JSON.stringify(traverse(tree.root)))
 
+tree.remove(9)
+
+console.log(tree.root)
 //     9
 //  4     20
 //1  6  15  170
