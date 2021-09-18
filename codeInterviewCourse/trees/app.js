@@ -80,6 +80,7 @@ class BinarySearchTree {
                 } else if (!cursorNode.right.left) {
                     if (!parentNode) {
                         this.root = cursorNode.right
+                        this.root.left = cursorNode.left
                         return true
                     }
                     if (cursorNode.value < parentNode.value){
