@@ -30,8 +30,17 @@ class LinkedList{
         }
         var newNode = new Node(value)
         newNode.next = pointer.next
-        pointer.next = newNode        
+        pointer.next = newNode
+        this.length++        
     }
+    remove(index){
+        let pointer = this.head
+        for (let i =0; (i + 1) !== index; i++) {
+            pointer = pointer.next
+        }
+        pointer.next = pointer.next.next        
+    }
+
     printList(){
         let pointer = this.head
         while(pointer){
@@ -48,5 +57,6 @@ ll.append(15)
 ll.prepend(1)
 
 ll.insert(1,2)
+ll.remove(1)
 
 ll.printList()
