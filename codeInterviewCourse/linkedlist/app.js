@@ -48,7 +48,7 @@ class LinkedList{
             pointer = pointer.next
         }
     }
-    reverse(){
+    reverseWithRecursion(){
         let pointer = this.head
         this.invert(null, pointer)
 
@@ -62,6 +62,19 @@ class LinkedList{
         } 
         pointer.next = previous
         return        
+    }
+    reverse(){
+        let previous = null
+        let pointer  = this.head
+        while(pointer){
+            let next = pointer.next
+            pointer.next = previous
+            previous = pointer
+            pointer = next
+        }
+        const temptail = this.tail
+        this.tail = this.head        
+        this.head = temptail
     }
 
 }
@@ -78,5 +91,5 @@ ll.remove(1)
 ll.printList()
 
 console.log("reverse")
-ll.reverse()
+ll.reverse2()
 ll.printList()
