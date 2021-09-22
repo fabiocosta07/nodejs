@@ -81,15 +81,15 @@ class LinkedList{
 
 var ll = new LinkedList(10)
 
+
 ll.append(14)
 ll.append(15)
-ll.prepend(1)
 
+ll.prepend(1)
 ll.insert(1,2)
 ll.remove(1)
 
 ll.printList()
-
 console.log("reverse")
-ll.reverse2()
+ll.reverse()
 ll.printList()
